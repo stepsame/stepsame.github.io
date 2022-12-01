@@ -1,8 +1,12 @@
 ---
 page: true
 title: About
-description: About me test
+description: About me
 aside: false
 ---
 # about me
-coming soon...
+Tommy Bu, born in China, Shandong Province. 
+
+Job: Software developer.
+
+Hobbies: Ski, Swimming, Travel, Reading, Japanese TV Shows.

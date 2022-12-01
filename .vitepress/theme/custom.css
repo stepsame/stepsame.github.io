@@ -9,79 +9,13 @@
 
 /* theme reset start */
 /* for copyright */
-.Layout {
-    min-height: calc(100vh - 55px) !important;
-}
-.vp-doc a {
-    color:var(--vp-c-text-1);
-    font-weight: 500;
-}
-.title {
-    color: var(--vp-c-text-1);
-    font-size: 1.8rem !important;
-    letter-spacing: 1px;
-    font-weight: 600 !important;
-    text-transform: uppercase;
-    font-family: var(--date-font-family);
-}
-
-
+/*.Layout {*/
+/*    min-height: calc(100vh - 55px) !important;*/
+/*}*/
 /* for aside start */
 .aside {
     position: fixed !important;
     right:24px;
-}
-.VPDoc {
-    padding-top: 32px !important;
-}
-.container {
-    max-width: 50rem !important;
-}
-.VPContent .container {
-    max-width: 50rem !important;
-    display: block !important;
-    position: relative;
-}
-.VPDoc.has-aside .content-container {
-    max-width: 1800px !important;
-}
-
-/* when width less 1440 hide the aside*/
-@media(min-width:1280px) {
-    .VPDoc .aside {
-        display: none !important;
-    }
-}
-@media(min-width:1440px) {
-    .VPDoc:not(.has-sidebar) .content {
-        max-width: inherit !important;
-    }
-    .VPDoc .aside {
-       display: block !important;
-    }
-}
-@media (min-width: 768px) {
-    .VPDoc {
-        padding-top: 10px !important;
-    }
-}
-@media (min-width: 960px) {
-    .VPNavBar .container {
-        /*//border-bottom: 1px solid var(--vp-c-divider-light) !important;*/
-    }
-    .content {
-        padding: 0 !important;
-    }
-    .VPDoc:not(.has-sidebar) .content {
-        max-width: inherit !important;
-    }
-    .VPDocAsideOutline .content {
-        padding-left: 14px !important;
-    }
-    .VPDoc {
-        padding-top: 10px !important;
-    }
-
 }
 /* for aside end */
 /* theme reset end */

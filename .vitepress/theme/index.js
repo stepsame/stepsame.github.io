@@ -10,7 +10,7 @@ import './custom.css'
 
 export default {
     ...DefaultTheme,
-    Layout: NewLayout,
+    // Layout: NewLayout,
     enhanceApp({ app }) {
         // register global componment
         app.component('Tags', Tags)
