@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "packageManager": "yarn@3.3.0",
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "globby": "^11.1.0",
+    "gray-matter": "^4.0.3",
+    "vitepress": "^1.0.0-alpha.29",
+    "vue": "^3.2.45"
+  },
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  }
+}
