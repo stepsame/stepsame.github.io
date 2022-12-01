@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 14
           cache: yarn
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immtable
 
       - name: Build
         run: yarn build
