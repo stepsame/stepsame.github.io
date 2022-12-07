@@ -32,7 +32,7 @@ output: [3, 6, 7] # since only these three values are both in arr1 and arr2
 2. if `M` is much bigger than `N`, then we can iterator the smaller array, then using binary search for the bigger array.
 
 ## Code
-```python3
+```python
 def solution1(arr1, arr2):
     i, j = 0, 0
     duplicates = []
