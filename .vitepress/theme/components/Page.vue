@@ -8,7 +8,6 @@
                 {{ article.frontMatter.date }}
             </time>
         </div>
-        </p>
     </div>
 
     <div class="pagination">
