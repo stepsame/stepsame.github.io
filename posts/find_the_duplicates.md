@@ -28,14 +28,24 @@ input:  arr1 = [1, 2, 3, 5, 6, 7], arr2 = [3, 6, 7, 8, 20]
 output: [3, 6, 7] # since only these three values are both in arr1 and arr2
 ```
 
-## Solution
+## Solution 1
 
-1. if `M` is equal to `N`, then we can use two pointers iterator two arrays.
-2. if `M` is much bigger than `N`, then we can iterator the smaller array, then using binary search for the bigger array.
+### Case 1 (M ≈ N)
 
-## Code
+We can use the fact that the arrays are sorted to traverse both in an in-order manner simultaneously. 
+
+The general idea of the algorithm is to use two indices, `i` and `j`, for `arr1` and `arr2`, respectively. 
+
+If arr1[i] is less than arr2[j], we increment i. 
+
+If arr1[i] is greater than arr2[j], we increment j.
+
+If arr1[i] == arr2[j], we add the value to the output array and increment both indices.
+
+
+### Code
 ```python
-def solution1(arr1, arr2):
+def find_duplicates1(arr1, arr2):
     i, j = 0, 0
     duplicates = []
     while i < len(arr1) and j < len(arr2):
@@ -50,7 +60,35 @@ def solution1(arr1, arr2):
     return duplicates
 
 
-def solution2(arr1, arr2):
+def main():
+    assert find_duplicates1(arr1=[1, 2, 3, 5, 6, 7], arr2=[3, 6, 7, 8, 20]) == [3, 6, 7]
+
+```
+
+### Time & Space Complexity:
+
+Time Complexity: `O(M+N)` 
+
+since in the worst-case scenario, we traverse both arrays once. 
+
+Space Complexity: `O(N)`
+
+the variable duplicates are the only dynamic auxiliary space we’re using in the algorithm. 
+In the worst-case scenario, the size of duplicates is going to be as big as the smaller input array. 
+For instance, when the smaller array is fully contained within the bigger one. The space complexity is therefore O(N), where N ≤ M.
+
+
+## Solution 2
+### Case 2 (M ≫ N)
+
+When one array is substantially longer than the other, we should try to avoid traversing the longer one. 
+
+Instead, we can traverse the shorter array and look up its values in the longer array by using the binary search algorithm. 
+
+### Code
+
+```python
+def find_duplicates2(arr1, arr2):
     # let arr2 becomes the smaller one
     if len(arr1) < len(arr2):
         arr1, arr2 = arr2, arr1
@@ -60,37 +98,35 @@ def solution2(arr1, arr2):
         search_index = binary_search_index(arr1, i, last_index, len(arr1) - 1)
         if search_index != -1:
             duplicates.append(arr1[search_index])
+            last_index = search_index
     return duplicates
 
 
 def binary_search_index(arr, element, start, end):
-    i, j = start, end
-    # 0, 1, 2, 3
-    while i <= j:
-        mid = (i + j) // 2
+    low, high = start, end
+    while low <= high:
+        mid = (low + high) // 2
         if arr[mid] == element:
             return mid
         if arr[mid] < element:
-            i = mid + 1
+            low = mid + 1
         else:
-            j = mid - 1
+            high = mid - 1
     return -1
 
 
 def main():
-    assert solution1(arr1=[1, 2, 3, 5, 6, 7], arr2=[3, 6, 7, 8, 20]) == [3, 6, 7]
-    assert solution2(arr1=[1, 2, 3, 5, 6, 7], arr2=[3, 6, 7, 8, 20]) == [3, 6, 7]
+    assert find_duplicates2(arr1=[1, 2, 3, 5, 6, 7], arr2=[3, 6, 7, 8, 20]) == [3, 6, 7]
 
-
-if __name__ == '__main__':
-    main()
 ```
 
-## Time & Space Complexity:
-Solution1:
-Time Complexity: O(M+N) iterator two arrays
-Space Complexity: O(N) for the output array
+### Time & Space Complexity
 
-Solution2:
-Time Complexity: O(M * log N) binary search is O(log N), for M times
-Space Complexity: O(N) for the output array
+Time Complexity: `O(N * log M)`
+
+we running a binary search on `arr2` `N` times. Hence the time complexity is `O(N⋅log(M))`.
+
+Space Complexity: `O(N)`
+
+The same as solution1. 
+
