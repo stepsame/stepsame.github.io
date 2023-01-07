@@ -28,8 +28,10 @@ output: [3, 1] # since these are the indices of the
 ## Solution 
 
 two sum. 
-We can use a dictionary store all number and its index. 
-Traverse the array, find if limit minus current num in the dictionary.
+We can use a dictionary to store all numbers and its index. 
+
+Traverse the array, and find if limit minus current num in the dictionary.
+
 
 
 
