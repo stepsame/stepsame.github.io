@@ -1,7 +1,7 @@
 const { getPosts, generatePaginationPages } = require('./theme/serverUtils')
 
 async function config() {
-  await generatePaginationPages(15)
+  await generatePaginationPages(20)
   const posts = await getPosts()
   return {
     title: "Tommy Bu's Blog",
@@ -25,7 +25,7 @@ async function config() {
         copyright: 'Copyright © 2022-present Tommy Bu'
       },
       // custom
-      pageSize: 15,
+      pageSize: 20,
       posts: posts,
     },
   }
