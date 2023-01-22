@@ -1,9 +1,24 @@
 const { getPosts, generatePaginationPages } = require('./theme/serverUtils')
+import mathjax3 from 'markdown-it-mathjax3';
+
+const customElements = ['mjx-container'];
 
 async function config() {
   await generatePaginationPages(20)
   const posts = await getPosts()
   return {
+    markdown: {
+      config: (md) => {
+        md.use(mathjax3);
+      },
+    },
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => customElements.includes(tag),
+        },
+      },
+    },
     title: "Tommy Bu's Blog",
     base: '/',
     description: 'Code & Fun.',
