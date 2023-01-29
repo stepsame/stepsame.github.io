@@ -1,5 +1,5 @@
 ---
-date: 2023-02-22
+date: 2023-01-22
 title: Sudoku Solver
 tags:
 - algorithm
