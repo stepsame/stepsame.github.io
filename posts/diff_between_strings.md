@@ -39,7 +39,9 @@ So we could use the dynamic programming algorithm to find the minimum edit dista
 
 1. We use a 2-D array dp, which dp[i][j] represents min edit distances among s[:i-1] and t[:j-1]\
 When i = 0 or j = 0, the dp[i][j] value is the length of the other string.\
-And in the general, if s[i-1] == t[j-], dp[i][j] = dp[i-1][j-1]; else dp[i][j] = 1 + max(dp[i-1][j], dp[i][j-1])\
+And in the general, we will have:\
+if s[i-1] == t[j-], dp[i][j] = dp[i-1][j-1]; \
+else dp[i][j] = 1 + max(dp[i-1][j], dp[i][j-1])
 
 2. dp[n][m] is the min edit distance. So We will only print the distances in descending order. \
 We use i and j for the source and target string index, and let i = n, j = m.\
