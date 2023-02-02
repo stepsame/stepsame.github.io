@@ -20,13 +20,9 @@ Every word is encrypted as follows:
 For instance, to encrypt the word “crime”
 
 Decrypted message:  c   r   i   m   e
-
 Step 1:             99  114 105 109 101
-
 Step 2:            100  214 319 428 529
-
 Step 3:            100  110 111 116 113
-
 Encrypted message:  d   n   o   t   q
 
 Write a function named decrypt(word) that receives a string that consists of small latin letters only, and returns the decrypted word.
@@ -47,21 +43,15 @@ output: "encyclopedia"
 
 ## Solution 
 
-the first letter is very easy to decrypt:
+So the encryption algorithm is:
 
-1. Convert the first letter back to its ASCII value.
-2. Subtract 1 from it.
-3. Move the value to be in the range of a-z ASCII values (97-122), by adding 26.
-4. Convert the result back to a character.
+1. ord(Y[0]) = ord(X[0]) + 1
+2. ord(Y[1]) = ord(X[1]) + ord(Y[0]) - N*26
 
-The decryption of the rest of the letters is done by almost the same algorithm -
-given the decrypted previous letter prev, and its value after the second step of encryption - denoted secondStepPrev:
+Then we can modify the equation to get the decryption algorithm:
 
-1. Convert the current letter back to its ASCII value.
-2. Subtract secondStepPrev from it.
-3. Move the value to be in the range of a-z ASCII value (97-122), by adding multiples of 26.
-4. Convert the result back to a character. Store its ASCII value in prev, and add its value to secondStepPrev (for the decryption of the next letter).
-
+1. ord(X[0]) = ord(Y[0]) - 1
+2. ord(X[1]) = ord(Y[1]) - ord(Y[0]) + N*26
 
 
 
