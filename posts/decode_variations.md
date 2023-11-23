@@ -30,13 +30,21 @@ explanation: There are 3 messages that encode to '1262': 'AZB', 'ABFB', and 'LFB
 
 We can use dynamic programming to solve this problem.
 
-Assuming there is a string X(for example, ‘12’) and I know the ways to decode it is 2 ([1,2] or [12]). 
+We create an array `dp` where `dp[i]` will represent the number of ways to decode the message up to the i-th digit.
 
-Let me append one more char(for example, ‘3’). Obviously, for the new string, the decode way is 2 (by decoding 3 to ‘C’ and getting [1,2,3] or [12,3]) + 1 (by decoding 3 with its previous char ‘2’, and then use adopt the decode ways for ‘1’ which is 1) = 3. 
+We start iterating through each digit of the encoded message.
 
-So in general, if I use dp[i] for the decode ways of the string ending at index i, I will have
+For each digit, we consider two possibilities:
 
-$$ dp[i] = dp[i-1] + dp[i-2] (0 < s[i-1] + s[i] ≤ 26) $$
+1. If the current digit is not '0', it can be decoded on its own. So, we add the number of ways to decode the message up to the previous digit (`dp[i-1]`) to `dp[i]`.
+
+2. If the last two digits form a valid encoding (between 10 and 26), we add the number of ways to decode the message up to two digits before (`dp[i-2]`) to `dp[i]`.
+
+We continue this process until we reach the end of the encoded message.
+
+The final result is stored in dp[n], where n is the length of the input string.
+
+$$ dp[i] = dp[i-1] (s[i]>0) + dp[i-2] (10 < s[i-1:i+1] ≤ 26) $$
 
 
 
