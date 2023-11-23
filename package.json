@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@1,22.21",
   "devDependencies": {
     "fs-extra": "^10.1.0",
     "globby": "^11.1.0",
